@@ -7,11 +7,15 @@
     "lint:watch": "npm run lint -- --watch",
     "prestart": "babel-node buildScripts/startMessage.js",
     "open:src": "babel-node buildScripts/srcServer.js ",
-    "start": "npm-run-all --parallel open:src lint:watch"
+    "start": "npm-run-all --parallel open:src lint:watch test:watch",
+    "test": "mocha --reporter progress --require @babel/register  \"src/**/*.test.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "babel-register": "^6.26.0",
+    "mocha-jsdom": "^2.0.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
